@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note</title>
+    <link rel="stylesheet" href="css/onsenui.css" />
+    <link rel="stylesheet" href="css/onsen-css-components.min.css" />
+    <script src="js/onsenui.min.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <ons-splitter>
+      <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+        <ons-page>
+          <ons-toolbar>
+            <div class="center">
+              <span class="fa fa-sticky-note"></span> Note App
+            </div>
+          </ons-toolbar>
+          <ons-list>
+            <ons-list-header>Main</ons-list-header>
+            <ons-list-item onclick="fn.load('home.html')" tappable>
+              Home
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('bookmark.html')" tappable>
+              Bookmark
+            </ons-list-item>
+          </ons-list>
+          <ons-list>
+            <ons-list-header>Category</ons-list-header>
+            <ons-list-item onclick="fn.load('kuliah.html')" tappable>
+              Kuliah
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('hiburan.html')" tappable>
+              Hiburan
+            </ons-list-item>
+            <ons-list-item onclick="fn.load('personal.html')" tappable>
+              Personal
+            </ons-list-item>
+          </ons-list>
+        </ons-page>
+      </ons-splitter-side>
+      <ons-splitter-content
+        id="content"
+        page="home.html"
+      ></ons-splitter-content>
+    </ons-splitter>
+
+    <template id="home.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">Home</div>
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('tambah.html')"
+              ><span class="fa fa-plus"></span>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px">
+          Swipe right to open the menu!
+        </p>
+      </ons-page>
+    </template>
+
+    <template id="bookmark.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">Bookmark</div>
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('tambah.html')"
+              ><span class="fa fa-plus"></span>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+      </ons-page>
+    </template>
+    <template id="kuliah.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">Kuliah</div>
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('tambah.html')"
+              ><span class="fa fa-plus"></span
+            ></ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+      </ons-page>
+    </template>
+    <template id="hiburan.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">Hiburan</div>
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('tambah.html')"
+              ><span class="fa fa-plus"></span>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+      </ons-page>
+    </template>
+    <template id="personal.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">Personal</div>
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('tambah.html')"
+              ><span class="fa fa-plus"></span
+            ></ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+      </ons-page>
+    </template>
+    <template id="tambah.html">
+      <ons-page>
+        <ons-toolbar modifier="material ">
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+
+          <div class="center">Tambah Catatan</div>
+
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('home.html')"
+              ><span></span>Kembali
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan Baru</ons-list-header>
+            <ons-list-item modifier="longdivider">
+              <ons-row>
+                <ons-col width="25%">
+                  <label for="judul">Judul</label>
+                </ons-col>
+                <ons-col>
+                  <ons-input input-id="judul" placeholder=""></ons-input>
+                </ons-col> </ons-row
+            ></ons-list-item>
+            <ons-list-item modifier="longdivider">
+              <ons-row>
+                <ons-col width="25%">
+                  <label for="kategori">Kategori</label>
+                </ons-col>
+                <ons-col>
+                  <ons-select id="kategori" modifier="material">
+                    <option selected disabled>--Pilih Angsuran--</option>
+                    <option value="pemprograman">Pemprograman</option>
+                    <option value="kuliah">Kuliah</option>
+                    <option value="hiburan">Hiburan</option>
+                    <option value="personal">Personal</option>
+                  </ons-select>
+                </ons-col>
+              </ons-row>
+            </ons-list-item>
+            <ons-list-item modifier="longdivider">
+              <ons-row>
+                <ons-col width="25%">
+                  <label for="kategori">Catatan</label>
+                </ons-col>
+                <ons-col>
+                  <textarea
+                    modifier="material transparent"
+                    class="textarea"
+                    placeholder=""
+                    style="width: 95%; height: 100px"
+                  ></textarea>
+                </ons-col>
+              </ons-row>
+            </ons-list-item>
+            <ons-list-item modifier="longdivider">
+              <ons-row>
+                <ons-col width="67%"> </ons-col>
+                <ons-col>
+                  <ons-button onclick="fn.load('home.html')"
+                    ><span></span>Kembali
+                  </ons-button>
+                </ons-col>
+              </ons-row>
+            </ons-list-item>
+          </ons-list>
+        </div>
+      </ons-page>
+    </template>
+  </body>
+  <script src="js/app.js"></script>
+</html>
