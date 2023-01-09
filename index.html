@@ -64,7 +64,6 @@
 
     <template id="home.html">
       <ons-page>
-        <ons-pull-hook id="pull-hook"> Pull to refresh </ons-pull-hook>
         <ons-toolbar>
           <div class="left">
             <ons-toolbar-button onclick="fn.open()">
@@ -81,12 +80,12 @@
         <div style="margin-top: 20px">
           <ons-list modifier="inset">
             <ons-list-header>Catatan</ons-list-header>
-            <ons-list-item modifier="longdivider">Item A</ons-list-item>
-            <ons-list-item modifier="longdivider">Item B</ons-list-item>
+            <div id="list-data">
           </ons-list>
         </div>
       </ons-page>
     </template>
+    
 
     <template id="bookmark.html">
       <ons-page>
@@ -103,6 +102,12 @@
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan</ons-list-header>
+            <div id="list-data">
+          </ons-list>
+        </div>
       </ons-page>
     </template>
     <template id="kuliah.html">
@@ -120,6 +125,12 @@
             ></ons-toolbar-button>
           </div>
         </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan</ons-list-header>
+            <div id="list-data">
+          </ons-list>
+        </div>
       </ons-page>
     </template>
     <template id="hiburan.html">
@@ -137,6 +148,12 @@
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan</ons-list-header>
+            <div id="list-data">
+          </ons-list>
+        </div>
       </ons-page>
     </template>
     <template id="personal.html">
@@ -154,9 +171,15 @@
             ></ons-toolbar-button>
           </div>
         </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan | Personal</ons-list-header>
+            <div id="list-data-personal">
+          </ons-list>
+        </div>
       </ons-page>
     </template>
-    <template id="tambah.html">
+    <!-- <template id="tambah.html">
       <ons-page>
         <ons-toolbar modifier="material ">
           <div class="left">
@@ -174,7 +197,7 @@
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
-        <div style="margin-top: 20px">
+        <div style="margin-top: 20px" >
           <ons-list modifier="inset">
             <ons-list-header>Catatan Baru</ons-list-header>
             <ons-list-item modifier="longdivider">
@@ -230,6 +253,139 @@
             </ons-list-item>
           </ons-list>
         </div>
+      </ons-page>
+    </template> -->
+    <template id="tambah.html">
+      <ons-page>
+        <ons-toolbar modifier="material ">
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+
+          <div class="center">Tambah Catatan</div>
+
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('home.html')"
+              ><span><i class="fa fa-home" aria-hidden="true"></i></span>
+              <!-- Kembali -->
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div style="margin-top: 20px" >
+          <ons-list modifier="inset">
+            <ons-list-header>Catatan Baru</ons-list-header>
+            <ons-list-item modifier="nodivider">
+         <ons-row>
+          <ons-col width="65%" style="padding-right:50px;"> 
+            <ons-input input-id="judul" type="text" placeholder="Judul" float modifier="transparent"></ons-input>
+          </ons-col>
+          <ons-col class="right" width="35%" style="margin-top: -7px;"> 
+            <ons-select id="kategori" modifier="">
+              <option selected disabled value="tanpa kategori"><span class="fa fa-home">Kategori</span></option>
+
+              <option value="kuliah">Kuliah</option>
+              <option value="hiburan">Hiburan</option>
+              <option value="personal">Personal</option>
+            </ons-select>
+          </ons-col>
+         </ons-row>
+                 
+             </ons-list-item>
+           
+            <ons-list-item modifier="longdivider">
+            
+                  <textarea
+                  placeholder="mulai mengetik"
+                    
+                    class="textarea"
+                    placeholder=""
+                    style="width: 95%; height: 200px"
+                    id="catatan"
+                   
+                  ></textarea>
+         
+            </ons-list-item>
+           
+          </ons-list>
+        </div>
+        <ons-fab position="bottom right">
+          <ons-icon icon="md-save" onclick="tambah_data()"></ons-icon>
+        </ons-fab>
+      </ons-page>
+    </template>
+    <template id="detail.html">
+      <ons-page>
+        <ons-toolbar modifier="material ">
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+
+          <div class="center">Catatan</div>
+
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('home.html')"
+              ><span><i class="fa fa-home" aria-hidden="true"></i></span>
+            
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div style="margin-top: 20px">
+          <ons-list modifier="inset">
+            <ons-list-item modifier="nodivider" style="font-size:25px;font-weight: bold;">
+             
+              <ons-row>
+                <ons-col width="60%" >
+                  <span id="detail_judul" style="font-size: 25px; ;"><span id=""></span>
+                </ons-col>
+                <ons-col  >
+                  <!-- <span style="font-size: 19px;background-color: green; padding: 5px 10px; color: white; border-radius: 5px;" ><i class="fa fa-plus" aria-hidden="true"></i> Bookmark</span> -->
+                  <!-- <ons-button onclick="cek()" style="padding-top:-100px; "
+                  ><span style="padding-top: -100px;"  ><i class="fa fa-save" aria-hidden="true"></i> Bookmark</span> -->
+                </ons-button>
+                 
+                </ons-col>
+
+              </ons-row>
+            </ons-list-item>
+              <!-- <div id="list-detail">
+               
+              </div> -->
+             
+         
+             <ons-list-item modifier="nodivider" style="margin-top: -20px;" >
+              <ons-row>
+                <ons-col width="25%">
+                  <span id="detail_tanggal" style="color: rgb(160, 160, 160);"></span>
+                </ons-col>
+                <ons-col>
+                  <span style="background-color: rgb(255, 60, 0) ; color: white; margin-left: -2px; padding: 1px 10px; border-radius: 5px;" id="detail_kategori"></span>
+                </ons-col>
+
+              </ons-row>
+            </ons-list-item >
+            
+             <ons-list-item modifier="nodivider" style="margin-top: -18px;" >
+              <textarea readonly
+              modifier="material transparent"
+              class="textarea"
+              placeholder=""
+              id="detail_catatan"
+              style="width: 95%; height: 100px"
+              id="catatan"
+            ></textarea>
+            </ons-list-item>
+           
+              
+            </ons-list-item>
+          </ons-list>
+        </div>
+        <ons-fab position="bottom right">
+          <ons-icon icon="md-bookmark" onclick="cek()"></ons-icon>
+        </ons-fab>
       </ons-page>
     </template>
   </body>
