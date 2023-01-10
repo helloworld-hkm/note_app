@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="css/onsenui.css" />
     <link rel="stylesheet" href="css/onsen-css-components.min.css" />
     <script src="js/onsenui.min.js"></script>
-    <script
+    <!-- <script
       defer
       src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
       integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
   </head>
   <body>
     <ons-splitter>
@@ -76,14 +76,37 @@
               ><span class="fa fa-plus"></span>
             </ons-toolbar-button>
           </div>
+            <!-- <div class="right">
+              <ons-row>
+                <ons-col>
+                  <ons-toolbar-button onclick="fn.load('tambah.html')"
+                  ><span class="fa fa-plus"></span>
+                </ons-toolbar-button>
+                </ons-col>
+                <ons-col>
+                  <ons-toolbar-button onclick="fn.load('tambah.html')"
+                  ><span class="fa fa-home"></span>
+                </ons-toolbar-button>
+                </ons-col>
+              </ons-row>
+           
+          </div> -->
         </ons-toolbar>
         <div style="margin-top: 20px">
           <ons-list modifier="inset">
             <ons-list-header>Catatan</ons-list-header>
             <div id="list-data">
           </ons-list>
+         
         </div>
+        <ons-fab position="bottom right">
+          <ons-icon icon="md-refresh" onclick="window.location.reload()"></ons-icon>
+        </ons-fab>
+        <!-- <ons-fab position="bottom right">
+          <ons-icon icon="fa fa-refresh" onclick="tambah_data()"></ons-icon>
+        </ons-fab> -->
       </ons-page>
+     
     </template>
     
 
@@ -105,9 +128,10 @@
         <div style="margin-top: 20px">
           <ons-list modifier="inset">
             <ons-list-header>Catatan</ons-list-header>
-            <div id="list-data">
+            <div id="list-data-bookmark">
           </ons-list>
         </div>
+      
       </ons-page>
     </template>
     <template id="kuliah.html">
@@ -127,8 +151,8 @@
         </ons-toolbar>
         <div style="margin-top: 20px">
           <ons-list modifier="inset">
-            <ons-list-header>Catatan</ons-list-header>
-            <div id="list-data">
+            <ons-list-header>Catatan | Kuliah</ons-list-header>
+            <div id="list-data-kuliah">
           </ons-list>
         </div>
       </ons-page>
@@ -150,8 +174,8 @@
         </ons-toolbar>
         <div style="margin-top: 20px">
           <ons-list modifier="inset">
-            <ons-list-header>Catatan</ons-list-header>
-            <div id="list-data">
+            <ons-list-header>Catatan | Hiburan</ons-list-header>
+            <div id="list-data-hiburan">
           </ons-list>
         </div>
       </ons-page>
@@ -315,6 +339,69 @@
         </ons-fab>
       </ons-page>
     </template>
+
+    <!-- form edit -->
+    <template id="edit.html">
+      <ons-page>
+        <ons-toolbar modifier="material ">
+          <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+
+          <div class="center">Edit Catatan</div>
+
+          <div class="right">
+            <ons-toolbar-button onclick="fn.load('home.html')"
+              ><span><i class="fa fa-home" aria-hidden="true"></i></span>
+              <!-- Kembali -->
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div style="margin-top: 20px" >
+          <ons-list modifier="inset">
+            <ons-list-header>Edit Catatan</ons-list-header>
+            <ons-list-item modifier="nodivider">
+         <ons-row>
+          <ons-col width="65%" style="padding-right:50px;"> 
+            <ons-input id="judul" value=""   modifier="transparent"></ons-input>
+            <ons-input id="id" value=""  type="hidden"  modifier="transparent"></ons-input>
+          </ons-col>
+          <ons-col class="right" width="35%" style="margin-top: -7px;"> 
+            <ons-select id="kategori" modifier="">
+              <option selected disabled value="tanpa kategori"><span class="fa fa-home">Kategori</span></option>
+
+              <option value="kuliah">Kuliah</option>
+              <option value="hiburan">Hiburan</option>
+              <option value="personal">Personal</option>
+            </ons-select>
+          </ons-col>
+         </ons-row>
+                 
+             </ons-list-item>
+           
+            <ons-list-item modifier="longdivider">
+            
+                  <textarea
+                  placeholder="mulai mengetik"
+                    
+                    class="textarea"
+                    placeholder=""
+                    style="width: 95%; height: 200px"
+                    id="catatan"
+                   
+                  ></textarea>
+         
+            </ons-list-item>
+           
+          </ons-list>
+        </div>
+        <ons-fab position="bottom right">
+          <ons-icon icon="md-save" onclick="ubah_data()"></ons-icon>
+        </ons-fab>
+      </ons-page>
+    </template>
     <template id="detail.html">
       <ons-page>
         <ons-toolbar modifier="material ">
@@ -362,7 +449,7 @@
                   <span id="detail_tanggal" style="color: rgb(160, 160, 160);"></span>
                 </ons-col>
                 <ons-col>
-                  <span style="background-color: rgb(255, 60, 0) ; color: white; margin-left: -2px; padding: 1px 10px; border-radius: 5px;" id="detail_kategori"></span>
+                  <span style="background-color: rgb(255, 60, 0) ; color: white; margin-left: 2px; padding: 1px 10px; border-radius: 5px;" id="detail_kategori"></span>
                 </ons-col>
 
               </ons-row>
@@ -384,7 +471,7 @@
           </ons-list>
         </div>
         <ons-fab position="bottom right">
-          <ons-icon icon="md-bookmark" onclick="cek()"></ons-icon>
+          <ons-icon icon="md-bookmark" onclick="bookmark()"></ons-icon>
         </ons-fab>
       </ons-page>
     </template>
